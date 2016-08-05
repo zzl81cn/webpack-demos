@@ -3,7 +3,7 @@
  */
 var React = require('react'),
     ReactDOM = require('react-dom'),
-    Style = require('style-loader');
+    style = require('./app.css');
 
 ReactDOM.render(
     <div>
