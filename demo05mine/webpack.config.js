@@ -2,7 +2,7 @@
  * Created by zhouzilong on 2016/8/5.
  */
 module.exports = {
-    entry: './main.js',
+    entry: './main.jsx',
     output: {
         filename: 'bundle.js'
     },

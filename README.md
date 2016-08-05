@@ -34,9 +34,9 @@ Webpack is a front-end build systems like Grunt and Gulp.
 It can be used as a module bundler similar to Browserify, and do [much more](http://webpack.github.io/docs/what-is-webpack.html).
 
 ```bash
-$ browserify main.js > bundle.js
+$ browserify main.jsx > bundle.js
 # be equivalent to
-$ webpack main.js bundle.js
+$ webpack main.jsx bundle.js
 ```
 
 Its configuration file is `webpack.config.js`.
@@ -44,7 +44,7 @@ Its configuration file is `webpack.config.js`.
 ```javascript
 // webpack.config.js
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   }
@@ -102,10 +102,10 @@ To produce a production ready application, you could write `scripts` field in yo
 
 Entry file is a file which Webpack will read to build bundle.js.
 
-For example, `main.js` is an entry file.
+For example, `main.jsx` is an entry file.
 
 ```javascript
-// main.js
+// main.jsx
 document.write('<h1>Hello World</h1>');
 ```
 
@@ -124,7 +124,7 @@ Webpack follows `webpack.config.js` to build `bundle.js`.
 ```javascript
 // webpack.config.js
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   }
@@ -242,7 +242,7 @@ module: {
 
 Webpack allows you to require CSS in JS file, then preprocessed CSS file with CSS-loader.
 
-main.js
+main.jsx
 
 ```javascript
 require('./app.css');
@@ -273,7 +273,7 @@ webpack.config.js
 
 ```javascript
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   },
@@ -304,7 +304,7 @@ After launching the server, `index.html` will have internal style sheet.
 
 Webpack could also require images in JS files.
 
-main.js
+main.jsx
 
 ```javascript
 var img1 = document.createElement("img");
@@ -330,7 +330,7 @@ webpack.config.js
 
 ```javascript
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   },
@@ -437,7 +437,7 @@ Visit http://127.0.0.1:8080 , you'll find that only second `h1` is red, because 
 
 Webpack has a plugin system to expand its functions. For example, [UglifyJs Plugin](http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin) will minify output(`bundle.js`) JS codes.
 
-main.js
+main.jsx
 
 ```javascript
 var longVariableName = 'Hello';
@@ -461,7 +461,7 @@ webpack.config.js
 var webpack = require('webpack');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   },
@@ -475,7 +475,7 @@ module.exports = {
 };
 ```
 
-After launching the server, `main.js` will be minified into following.
+After launching the server, `main.jsx` will be minified into following.
 
 ```javascript
 var o="Hello";o+=" World",document.write("<h1>"+o+"</h1>")
@@ -487,7 +487,7 @@ This demo shows you how to load 3rd-party plugins.
 
 [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) could create `index.html` for you, and [open-browser-webpack-plugin](https://github.com/baldore/open-browser-webpack-plugin) could open a new browser tab when Webpack loads.
 
-main.js
+main.jsx
 
 ```javascript
 document.write('<h1>Hello World</h1>');
@@ -500,7 +500,7 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   },
@@ -528,7 +528,7 @@ Now you don't need to write `index.html` by hand and don't have to open browser 
 
 You can enable some codes only in development environment with environment flags.
 
-main.js
+main.jsx
 
 ```javascript
 document.write('<h1>Hello World</h1>');
@@ -558,7 +558,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   },
@@ -584,7 +584,7 @@ For big web apps it’s not efficient to put all code into a single file, Webpac
 At first, you use `require.ensure` to define a split point. ([official document](http://webpack.github.io/docs/code-splitting.html))
 
 ```javascript
-// main.js
+// main.jsx
 require.ensure(['./a'], function(require) {
   var content = require('./a');
   document.open();
@@ -614,7 +614,7 @@ webpack.config.js
 
 ```javascript
 module.exports = {
-  entry: './main.js',
+  entry: './main.jsx',
   output: {
     filename: 'bundle.js'
   }
@@ -627,14 +627,14 @@ Launch the server.
 $ webpack-dev-server
 ```
 
-On the surface, you won't feel any differences. However, Webpack actually builds `main.js` and `a.js` into different chunks(`bundle.js` and `1.bundle.js`), and loads `1.bundle.js` from `bundle.js` when on demand.
+On the surface, you won't feel any differences. However, Webpack actually builds `main.jsx` and `a.js` into different chunks(`bundle.js` and `1.bundle.js`), and loads `1.bundle.js` from `bundle.js` when on demand.
 
 ## Demo11: Code splitting with bundle-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo11))
 
 Another way of code splitting is using [bundle-loader](https://www.npmjs.com/package/bundle-loader).
 
 ```javascript
-// main.js
+// main.jsx
 
 // Now a.js is requested, it will be bundled into another file
 var load = require('bundle-loader!./a.js');
@@ -650,7 +650,7 @@ load(function(file) {
 
 `require('bundle-loader!./a.js')` tells Webpack to load `a.js` from another chunk.
 
-Now Webpack will build `main.js` into `bundle.js`, and `a.js` into `1.bundle.js`.
+Now Webpack will build `main.jsx` into `bundle.js`, and `a.js` into `1.bundle.js`.
 
 ## Demo12: Common chunk ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo12))
 
@@ -724,7 +724,7 @@ module.exports = {
 
 You can also extract the vendor libraries from a script into a separate file with CommonsChunkPlugin.
 
-main.js
+main.jsx
 
 ```javascript
 var $ = require('jquery');
@@ -750,7 +750,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './main.js',
+    app: './main.jsx',
     vendor: ['jquery'],
   },
   output: {
@@ -765,7 +765,7 @@ module.exports = {
 If you want a module available as variable in every module, such as making $ and jQuery available in every module without writing `require("jquery")`. You should use `ProvidePlugin` ([Official doc](http://webpack.github.io/docs/shimming-modules.html)).
 
 ```javascript
-// main.js
+// main.jsx
 $('h1').text('Hello World');
 
 
@@ -774,7 +774,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './main.js'
+    app: './main.jsx'
   },
   output: {
     filename: 'bundle.js'
