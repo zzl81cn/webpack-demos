@@ -9,5 +9,6 @@ ReactDOM.render(
     <div>
         <h1 className={style.h1}>HelloWorld</h1>
         <h2 className="h2">HelloWorld</h2>
-    </div>
-)
+    </div>,
+    document.getElementById("example")
+);
