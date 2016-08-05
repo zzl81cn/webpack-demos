@@ -1,7 +1,9 @@
 module.exports = {
-  entry: './main.jsx',
+  //entry: './main.jsx',
+  entry: './primary.jsx',
   output: {
-    filename: 'bundle.js'
+    //filename: 'bundle.js'
+    filename: 'bundleOther.js'
   },
   module: {
     loaders:[
